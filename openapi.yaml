@@ -3,13 +3,24 @@ info:
   title: "Minha API"
   version: "1.0.0"
   description: "Meu primeiro CI/CD"
+  contact: 
+    name: "Suporte"
+    email: "suporte@exemplo.com"
+
+
+tags:
+  - name: "Tarefas"
+    description: "Operações relacionadas ao gerenciamento de tarefas"
+
 servers:
   - url: "https://api.exemplo.com/v1"
     description: "Produção"
+
 paths:
   /tarefas:
     get:
       summary: "Listar tarefas"
+      description: "Retorna uma lista completa de todas as tarefas cadastradas." # <-- Correção do operation-description
       operationId: "listTasks"
       tags: ["Tarefas"]
       responses:
@@ -17,6 +28,7 @@ paths:
           description: "Lista de tarefas"
     post:
       summary: "Criar tarefa"
+      description: "Cria uma nova tarefa com base nos dados fornecidos." # <-- Correção do operation-description
       operationId: "createTask"
       tags: ["Tarefas"]
       requestBody:
@@ -34,6 +46,7 @@ paths:
   /tarefas/{id}:
     get:
       summary: "Buscar tarefa"
+      description: "Retorna os detalhes de uma tarefa específica informando o ID." # <-- Correção do operation-description
       operationId: "getTask"
       tags: ["Tarefas"]
       parameters:
@@ -48,8 +61,22 @@ paths:
         "404":
           description: "Não encontrada"
 
-    
-    git status
+    delete: # <-- Correção do Erro Crítico (Garantindo indentação limpa e dois-pontos)
+      summary: "Excluir tarefa"
+      description: "Remove uma tarefa permanentemente do sistema usando o ID." # <-- Correção do operation-description
+      operationId: "deleteTask"
+      tags: ["Tarefas"]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: "Tarefa excluída com sucesso"
+        "404":
+          description: "Tarefa não encontrada"
 
 components:
   schemas:
