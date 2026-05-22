@@ -48,22 +48,8 @@ paths:
         "404":
           description: "Não encontrada"
 
-    # --- NOVO ENDPOINT ADICIONADO AQUI ---
-    delete:
-      summary: "Excluir tarefa"
-      operationId: "deleteTask"
-      tags: ["Tarefas"]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        "204":
-          description: "Tarefa excluída com sucesso"
-        "404":
-          description: "Tarefa não encontrada"
+    
+    git status
 
 components:
   schemas:
